@@ -12,6 +12,7 @@ As given above this algorithm involves deep recursion which may cause stack over
 Horizontal Passage Bias
 Mazes generated with a depth-first search have a low branching factor and contain many long corridors, because the algorithm explores as far as possible along each branch before backtracking.
 
-![image](https://user-images.githubusercontent.com/51715921/210278098-98223878-c850-4f16-b75b-a207c007479b.png)
+![image](https://user-images.githubusercontent.com/51715921/210278157-2ae2b071-bb1c-42f8-9598-4880beaba8ce.png)
+
 
 
