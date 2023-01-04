@@ -1,5 +1,7 @@
-import random
+from algorithms import randomized_dfs_algorithm
+from algorithms import aldous_broder_algorithm
 
+# Class that defines a single cell/room
 class Cell():
     def __init__(self):
 
@@ -18,6 +20,7 @@ class Cell():
 
         self.neighbors = [self.top_neighbor, self.bottom_neighbor, self.left_neighbor, self.right_neighbor]
 
+    # Make passage way between cells
     def remove_wall(self, direction):
         if direction == "left":
 
@@ -72,17 +75,34 @@ class Cell():
 
         return output
 
-cell_list = []
+# Reshape array into m x n matrix
+def reshape_list(cell_list, WIDTH, HEIGHT):
+    
+    row_list = []
+
+    index = 0
+    for i in range(HEIGHT):
+        column_list = []
+        for j in range(WIDTH):
+            column_list.append(cell_list[index])
+
+            index += 1
+
+        row_list.append(column_list)
+
+    return row_list
+
+cell_list = [] 
 
 def generate_maze(WIDTH, HEIGHT):
 
     global cell_list
-    cell_list = []
 
     previous_cell = None
 
     index = 0
 
+    # Initialize left and right neighbors
     for row in range(HEIGHT):
         for column in range(WIDTH):
             current_cell = Cell()
@@ -109,6 +129,7 @@ def generate_maze(WIDTH, HEIGHT):
 
     index = 0
 
+    # Initialize top and bottom neighbors
     for row in range(HEIGHT):
         for column in range(WIDTH):
 
@@ -128,61 +149,8 @@ def generate_maze(WIDTH, HEIGHT):
 
             index += 1
 
-    visited = []
-    stack = []
+    # Generate maze
+    solution = aldous_broder_algorithm.generate(cell_list)
 
-    initial_cell = cell_list[0]
-
-    visited.append(initial_cell)
-    stack.append(initial_cell)
-
-    while len(stack):
-        current_cell = stack.pop()
-
-        print(current_cell)
-
-        neighbors = [current_cell.top_neighbor, current_cell.bottom_neighbor, current_cell.left_neighbor, current_cell.right_neighbor]
-        unvisited_neighbors = []
-        
-        for cell in neighbors:
-            if cell not in visited and cell != None:
-
-                unvisited_neighbors.append(cell)
-                if current_cell not in stack and current_cell != None:
-                    stack.append(current_cell)
-
-        if len(unvisited_neighbors):
-            chosen_cell = random.choice(unvisited_neighbors)
-
-            if current_cell.top_neighbor == chosen_cell:
-                current_cell.remove_wall("top")
-
-            elif current_cell.bottom_neighbor == chosen_cell:
-                current_cell.remove_wall("bottom")
-
-            elif current_cell.left_neighbor == chosen_cell:
-                current_cell.remove_wall("left")
-
-            elif current_cell.right_neighbor == chosen_cell:
-                current_cell.remove_wall("right")
-
-            visited.append(chosen_cell)
-            stack.append(chosen_cell)
-
-                
-
-    
-    # Reshape array into m x n matrix
-    row_list = []
-
-    index = 0
-    for i in range(HEIGHT):
-        column_list = []
-        for j in range(WIDTH):
-            column_list.append(cell_list[index])
-
-            index += 1
-
-        row_list.append(column_list)
-
-    return row_list
+    solution = reshape_list(cell_list, WIDTH, HEIGHT)
+    return solution
