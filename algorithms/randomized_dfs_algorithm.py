@@ -61,4 +61,4 @@ def generate(cell_list):
             visited.append(chosen_cell)
             stack.append(chosen_cell)
 
-    return cell_list
+    return cell_list, "Randomized Iterative DFS Algorithm"

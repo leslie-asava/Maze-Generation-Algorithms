@@ -64,4 +64,4 @@ def generate(cell_list):
 
         current_cell = chosen_cell
             
-    return cell_list
+    return cell_list, "Aldous-Broder Algorithm"

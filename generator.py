@@ -150,7 +150,7 @@ def generate_maze(WIDTH, HEIGHT):
             index += 1
 
     # Generate maze
-    solution = aldous_broder_algorithm.generate(cell_list)
+    solution, title = aldous_broder_algorithm.generate(cell_list)
 
     solution = reshape_list(cell_list, WIDTH, HEIGHT)
-    return solution
+    return solution, title

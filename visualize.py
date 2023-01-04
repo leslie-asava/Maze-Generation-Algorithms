@@ -8,7 +8,11 @@ CELL_LINE_WIDTH = 2
 
 screen = pygame.display.set_mode((640,640))
 
-maze = generate_maze(20,20)
+
+
+maze, title = generate_maze(20,20)
+
+pygame.display.set_caption(title)
 
 def visualize_maze(maze):
     start_y = 20
