@@ -1,5 +1,11 @@
 # Maze-Generation-Algorithms
-My implementation of maze generation using various algorithms with the Python Programming Language.
+My implementation of maze generation using various algorithms with the Python Programming Language. Currently implements;
+1. Randomized DFS algorithm
+2. Aldous-Broder algorithm
+3. More to come..
+
+# TO-DO
+- Add animations to visualizations
 
 # Randomized depth-first search
 This algorithm, also known as the "recursive backtracker" algorithm, is a randomized version of the depth-first search algorithm.
