@@ -3,7 +3,7 @@ from generator import generate_maze
 
 pygame.init()
 
-CELL_BORDER = (255,255,255)
+CELL_BORDER = (20,255,200)
 CELL_LINE_WIDTH = 2
 
 screen = pygame.display.set_mode((640,640))
